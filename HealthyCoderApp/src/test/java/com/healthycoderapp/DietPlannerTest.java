@@ -3,6 +3,7 @@ package com.healthycoderapp;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -37,5 +38,32 @@ class DietPlannerTest {
 				() -> assertEquals(expected.getCarbohydrate(), actual.getCarbohydrate())
 		);
 	}
+	@Test
+	void should_DietPlanner_checkpercentage() {
+		// given
+		 int proteinPercentage=60,carbohydratePercentage=30,fatPercentage=10;
+		if (proteinPercentage + fatPercentage + carbohydratePercentage != 100) {
+			assertThrows(RuntimeException.class,()->new DietPlanner(proteinPercentage,carbohydratePercentage,fatPercentage));
+		}
+	}
+	@Test
+	void should_calculateBMR_checkForFemaleGender() {
+		// given
+		Coder coder = new Coder(1.82, 75.0, 26, Gender.FEMALE);
+		DietPlan expected = new DietPlan(1918, 96, 64, 240);
 
-}
+		// when
+		DietPlan actual = dietPlanner.calculateDiet(coder);
+
+		// then
+		assertAll(() -> assertEquals(expected.getCalories(), actual.getCalories()),
+				() -> assertEquals(expected.getProtein(), actual.getProtein()),
+				() -> assertEquals(expected.getFat(), actual.getFat()),
+				() -> assertEquals(expected.getCarbohydrate(), actual.getCarbohydrate())
+		);
+	}
+		
+		
+	}
+		
+

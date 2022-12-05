@@ -158,5 +158,10 @@ class BMICalculatorTest {
 		}
 		
 	}
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		System.out.println("After all unit tests");
+	}
+
 
 }
