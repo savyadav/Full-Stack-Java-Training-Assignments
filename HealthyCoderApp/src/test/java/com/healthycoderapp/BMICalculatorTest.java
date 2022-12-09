@@ -162,6 +162,17 @@ class BMICalculatorTest {
 	static void tearDownAfterClass() throws Exception {
 		System.out.println("After all unit tests");
 	}
+	//@Test
+//	public static void calculateBMI_checkforheightzero() {
+//		double height = 0.0;
+//		double weight=20;
+//		Coder code = new Coder(height,weight);
+//		code.setHeight(0.0);
+//		code.setWeight(20);
+//		if (height == 0.0)
+//			assertThrows(ArithmeticException.class,()->BMICalculator.calculateBMI(code));
+//		
+//	}
 
 
 }
